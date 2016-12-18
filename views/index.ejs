@@ -6,6 +6,20 @@
   </head>
   <body>
     <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <p>¡Bienvenidos a <%= title %>!</p>
+    <p>En este blog podrás participar en la discusión de programas y series de TV.</p>
+    <br>
+    <h2>Últimas entradas</h2>
+    <% blogEntries.forEach(function (entry, index) { %>
+    	<h3><%= entry.title %></h3>
+    	<%= entry.author %> @ 
+    	<%= entry.creationDate.getFullYear()%>/<%=entry.creationDate.getMonth() %>/<%=entry.creationDate.getDate() %> 
+    	<%=entry.creationDate.getHours() %>:<%=entry.creationDate.getMinutes() %> hrs
+    	<p><%= entry.content %></p>
+    	<% entry.labels.forEach(function (label, index) { %>
+    		<%= label %> 
+    	<% }); %>
+    <% }); %>
+    <p>¡Crea una nueva entrada <a href="./new_entry">aquí</a>!</p>
   </body>
 </html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+  	<a href="./">Regresar</a>
+    <h1>Nueva entrada</h1>
+    <form action="/new_entry" method="POST">
+    <p>Tu nombre</p>
+	  <input type="text" placeholder="Nombre completo" name="author">
+    <p>Las etiquetas para tu entrada (separadas, por, comas)</p>
+	  <input type="text" placeholder="Etiquetas" name="labels">
+    <p>Título de la entrada</p>
+	  <input type="text" placeholder="Título" name="title">
+    <p>El contenido de tu entrada</p>
+	  <input type="text" placeholder="Texto" name="content">
+	  <br>
+	  <p><button type="submit">Enviar</button></p>
+	</form>
+  </body>
+</html>
