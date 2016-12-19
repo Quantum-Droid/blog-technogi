@@ -9,7 +9,8 @@ var blogEntrySchema = mongoose.Schema({
   creationDate: Date,	// Creation date of the entry
   title: String,			// Entry's title
   content: String,		// The entry's content
-  labels: [String]		// Labels for classification
+  labels: [String],		// Labels for classification
+  imageURL: String		// URL string containing the post's header image
 });
 
 //-------------------------------------------------------------------------------

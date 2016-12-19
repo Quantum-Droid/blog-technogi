@@ -33,7 +33,7 @@ router.get('/', function(req, res, next) {
   		res.render('index', { title: BlogName, blogEntries: [] });
   		return;
 		}
-		//console.log(blogEntries);
+		console.log(blogEntries);
   	res.render('index', { title: BlogName, blogEntries: blogEntries });
   	return;
 	});
@@ -53,6 +53,7 @@ router.post('/new_entry', function (req, res, next) {
 	}
 	let title = sanitize(req.body.title);
 	let content = sanitize(req.body.content);
+	let imageURL = sanitize(req.body.imageURL);
 
 	// Save results on MongoDB and redirect to homepage
 	let blogEntry = new BlogEntry({
@@ -60,7 +61,8 @@ router.post('/new_entry', function (req, res, next) {
 		creationDate: new Date,
 		title: title,
 		content: content,
-		labels: labels
+		labels: labels,
+		imageURL: imageURL
 	});
 
 	res.redirect('/');
