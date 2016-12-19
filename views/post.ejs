@@ -95,6 +95,16 @@
 
     <hr>
 
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <button class="btn btn-danger" id="delete-post-button">Borrar Post</button>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -116,6 +126,17 @@
 
     <!-- Theme JavaScript -->
     <script src="/javascripts/clean-blog.min.js"></script>
+
+    <!-- Delete button script -->
+    <script type="text/javascript">
+        $('#delete-post-button').click(function() {
+            var confirmation = confirm('¿Seguro que quieres borrar este post?');
+            if (confirmation) {
+                
+                return;
+            }
+        });
+    </script>
 
 </body>
 

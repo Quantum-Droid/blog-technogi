@@ -24,10 +24,10 @@ function promisify(func) {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+	// Get all blog entries for display to the user
 	var BlogEntries = mongoose.model('blogEntry');
 
-	// Get all blog entries for display to the user
-	BlogEntries.find(function (err, blogEntries) {
+	BlogEntries.find({}, null, { sort: { creationDate: -1 } }, function (err, blogEntries) {
 		if (err) {
 			console.log("ERROR: couldn't retrieve values from Blog Entries.");
   		res.render('index', { title: BlogName, blogEntries: [] });
@@ -40,6 +40,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/new_entry', function (req, res, next) {
+	// Show the New Post page
 	res.render('new-entry', { title: BlogName });
 });
 
@@ -76,6 +77,14 @@ router.get('/post', function (req, res, next) {
 		}
 		res.render('post', { title: BlogName, post: entry });
 	});
+});
+
+router.delete('/post', function (req, res, next) {
+	// Get the MongoDB _id from the post to delete
+	var id = req.query.id;
+	// BlogEntry
+
+	res.redirect('/');
 });
 
 module.exports = router;
