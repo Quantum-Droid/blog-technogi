@@ -132,7 +132,18 @@
         $('#delete-post-button').click(function() {
             var confirmation = confirm('¿Seguro que quieres borrar este post?');
             if (confirmation) {
-                
+                $.ajax({
+                    url: '/post?id=<%= post._id %>',
+                    type: 'DELETE',
+                    success: function(data, textStatus, jqXHR) { 
+                        alert('Post borrado exitosamente.'); 
+                        window.location.replace("/");
+                    },
+                    error: function(jqXHR, errorType, exception) { 
+                        alert('Error: no se pudo borrar el post.'); 
+                        window.location.replace("/");  
+                    }
+                });
                 return;
             }
         });

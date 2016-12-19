@@ -82,9 +82,15 @@ router.get('/post', function (req, res, next) {
 router.delete('/post', function (req, res, next) {
 	// Get the MongoDB _id from the post to delete
 	var id = req.query.id;
-	// BlogEntry
-
-	res.redirect('/');
+	BlogEntry.remove({ _id: id }, function(err) {
+		if (err) {
+			console.log('ERROR:\n' + err);
+			res.json({ errorMessage: 'Error trying to delete document', status: 500 });
+			return;
+		}
+		console.log('Removed id: ' + id);
+		res.json({ successMessage: 'Document deleted succesfully', status: 200 });
+	});
 });
 
 module.exports = router;
