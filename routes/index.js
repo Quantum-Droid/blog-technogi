@@ -33,7 +33,7 @@ router.get('/', function(req, res, next) {
   		res.render('index', { title: BlogName, blogEntries: [] });
   		return;
 		}
-		console.log(blogEntries);
+		//console.log(blogEntries);
   	res.render('index', { title: BlogName, blogEntries: blogEntries });
   	return;
 	});
@@ -62,8 +62,20 @@ router.post('/new_entry', function (req, res, next) {
 		labels: labels
 	});
 
-	res.redirect('./');
+	res.redirect('/');
 	return promisify(blogEntry.save());
+});
+
+router.get('/post', function (req, res, next) {
+	// Get MongoDB _id from URL and use it to find entry (post)
+	var id = req.query.id;
+	BlogEntry.findById(id, function (err, entry) {
+		if (err) {
+			res.render('/');
+			return;
+		}
+		res.render('post', { title: BlogName, post: entry });
+	});
 });
 
 module.exports = router;

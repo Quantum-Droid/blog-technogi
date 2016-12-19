@@ -40,7 +40,7 @@
             <div class="navbar-header page-scroll">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
-                    Menu <i class="fa fa-bars"></i>
+                    Menú <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand" href="/"><%= title %></a>
             </div>
@@ -79,21 +79,24 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <% blogEntries.forEach(function (entry, index) { %>
-                    <div class="post-preview">
-                        <a href="post.html">
-                            <h2 class="post-title">
-                                <%= entry.title %>
-                            </h2>
-                        </a>
-                        <h3 class="post-subtitle">
-	                        <% entry.labels.forEach(function (label, index) { %>
-	                                <%= label %> 
-	                        <% }); %>
-                        </h3>
-                        <p class="post-meta">Posted by <%= entry.author %> on <%= entry.creationDate.getFullYear()%>/<%=entry.creationDate.getMonth() %>/<%=entry.creationDate.getDate() %> 
-                        <%=entry.creationDate.getHours() %>:<%=entry.creationDate.getMinutes() %> hrs</p>
-                    </div>
-                    <hr>
+                  <div class="post-preview">
+                      <a href="/post/?id=<%= entry._id %>">
+                          <h2 class="post-title">
+                              <%= entry.title %>
+                          </h2>
+                      </a>
+                      <h4 class="post-subtitle">
+                        Tags: 
+                        <i>
+                        <% entry.labels.forEach(function (label, index) { %>
+                                <%= label %> 
+                        <% }); %>
+                        </i>
+                      </h4>
+                      <p class="post-meta">Posted by <%= entry.author %> on <%= entry.creationDate.getFullYear()%>/<%=entry.creationDate.getMonth() %>/<%=entry.creationDate.getDate() %> 
+                      <%=entry.creationDate.getHours() %>:<%=entry.creationDate.getMinutes() %> hrs</p>
+                  </div>
+                  <hr>
                 <% }); %>
                 <!-- Pager -->
 <!--                 <ul class="pager">
